@@ -1,8 +1,8 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +24,14 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+:where(
+    .css-dev-only-do-not-override-1w4v3hc
+  ).ant-menu-light.ant-menu-root.ant-menu-inline {
+  border: unset !important;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
 }

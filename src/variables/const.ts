@@ -1,0 +1,20 @@
+export const list_color_realization = ['#023047', '#126782', '#FD9E02'];
+export const list_color_composition = [
+  '#03045E',
+  '#0077B6',
+  '#00B4D8',
+  '#90E0EF',
+  '#CAF0F8',
+  '#FFB703',
+  '#FD9E02',
+  '#F88500',
+  '#A5C1AE',
+  '#DCDFE5',
+  '#DF8080',
+  '#AD080F',
+  '#BB3E03',
+  '#C5C6C6',
+  '#23233B',
+  '#8E0413',
+  '#219EBC',
+];
