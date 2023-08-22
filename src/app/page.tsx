@@ -1,5 +1,6 @@
 'use client';
 import { requestPermission } from '@/firebase/push_notification';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';
 
 export const metadata = {
@@ -8,9 +9,28 @@ export const metadata = {
 };
 
 export default function Home() {
-  useEffect(() => {
-    requestPermission();
-  }, []);
+  const dispatch = useAppDispatch();
+  const tokens = useAppSelector(state => state.tokens);
 
-  return <p>Dibuat untuk testing component dan package</p>;
+  const initiate = async () => {
+    try {
+      await requestPermission();
+      dispatch({ type: 'tokens/get_tokens', payload: {} });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    initiate();
+  }, [dispatch]);
+
+  return (
+    <section>
+      <p>Dibuat untuk testing component dan package</p>
+      {tokens.data &&
+        tokens.data.length > 0 &&
+        tokens.data.map((e: string, key: number) => <p key={key}>{e}</p>)}
+    </section>
+  );
 }
