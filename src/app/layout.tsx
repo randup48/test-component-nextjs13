@@ -2,7 +2,7 @@ import Navbar from '@/components/navbar/navbar_mobile';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Providers } from '@/redux/provider';
+import { Providers } from '@/utils/redux/provider';
 
 const inter = Inter({ subsets: ['latin'] });
 

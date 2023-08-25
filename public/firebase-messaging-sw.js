@@ -39,5 +39,5 @@ messaging.onBackgroundMessage(payload => {
   };
 
   // eslint-disable-next-line no-restricted-globals
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  // self.registration.showNotification(notificationTitle, notificationOptions);
 });
