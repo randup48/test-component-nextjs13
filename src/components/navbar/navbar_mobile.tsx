@@ -3,13 +3,11 @@
 import {
   CloseOutlined,
   HomeOutlined,
-  LogoutOutlined,
   MenuOutlined,
 } from '@ant-design/icons/lib/icons';
 import { Button, Menu, MenuProps } from 'antd';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
-import Image from 'next/image';
 import './style.css';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -62,6 +60,7 @@ const items: MenuProps['items'] = [
 const rootSubmenuKeys = ['', 'amchart', 'table', 'push_notification'];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const router = useRouter();
   const [toggleMenu, setToggleMenu] = useState(false);
   const [openKeys, setOpenKeys] = useState([rootSubmenuKeys[0]]);
@@ -82,37 +81,39 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
-      <div className='p-3 flex items-center drop_shadow gap-3'>
-        {/* menu */}
-        <Button
-          icon={!toggleMenu ? <MenuOutlined /> : <CloseOutlined />}
-          onClick={() => {
-            setToggleMenu(!toggleMenu);
-          }}
+    pathname !== '/login' && (
+      <nav>
+        <div className='p-3 flex items-center drop_shadow gap-3'>
+          {/* menu */}
+          <Button
+            icon={!toggleMenu ? <MenuOutlined /> : <CloseOutlined />}
+            onClick={() => {
+              setToggleMenu(!toggleMenu);
+            }}
+          />
+
+          {/* logo */}
+          <a
+            onClick={() => {
+              router.push(`/`);
+            }}
+            style={{ cursor: 'pointer' }}
+          >
+            Testing
+          </a>
+        </div>
+
+        <Menu
+          onClick={onClick}
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+          style={{ width: '100%', display: toggleMenu ? 'block' : 'none' }}
+          // defaultSelectedKeys={['1']}
+          // defaultOpenKeys={['sub1']}
+          mode='inline'
+          items={items}
         />
-
-        {/* logo */}
-        <a
-          onClick={() => {
-            router.push(`/`);
-          }}
-          style={{ cursor: 'pointer' }}
-        >
-          Testing
-        </a>
-      </div>
-
-      <Menu
-        onClick={onClick}
-        openKeys={openKeys}
-        onOpenChange={onOpenChange}
-        style={{ width: '100%', display: toggleMenu ? 'block' : 'none' }}
-        // defaultSelectedKeys={['1']}
-        // defaultOpenKeys={['sub1']}
-        mode='inline'
-        items={items}
-      />
-    </nav>
+      </nav>
+    )
   );
 }

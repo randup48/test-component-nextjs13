@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Providers } from '@/utils/redux/provider';
+import BodyTemplate from '@/components/body/body';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,13 +25,13 @@ export default function RootLayout({
         <meta name='theme-color' content='#fff' />
       </head>
 
-      <body className={inter.className}>
-        <Navbar />
+      <Providers>
+        <body className={inter.className}>
+          <Navbar />
 
-        <div className='px-3 py-[30px]'>
-          <Providers>{children} </Providers>
-        </div>
-      </body>
+          <BodyTemplate>{children}</BodyTemplate>
+        </body>
+      </Providers>
     </html>
   );
 }
