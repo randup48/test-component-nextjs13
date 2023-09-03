@@ -1,9 +1,13 @@
 'use client';
+import { useAppDispatch } from '@/utils/redux/hooks';
+import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
 const Page = () => {
-  const email = useRef();
-  const pass = useRef();
+  const email = useRef(null);
+  const pass = useRef(null);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   return (
     <main className='flex flex-col gap-3 justify-center items-center h-screen'>
@@ -11,23 +15,27 @@ const Page = () => {
       <p>Welcome</p>
       <p>Enter your credentials to log in</p>
       <input
-        ref={email.current}
+        ref={email}
         type='text'
         name='text'
-        id='username'
+        // id='email'
         // onChange={e => setUsername(e.target.value)}
       />
       <input
-        ref={pass.current}
+        ref={pass}
         type='password'
         name='password'
-        id='password'
+        // id='pass'
         // onChange={e => setPass(e.target.value)}
       />
       <input
         type='submit'
         value='Login'
-        // onClick={() => fetchAPi(username, pass)}
+        onClick={() => {
+          localStorage.setItem('token', 'sdawds');
+          dispatch({ type: 'access_menu/get_menu', payload: {} });
+          router.push('/');
+        }}
       />
     </main>
   );

@@ -23,6 +23,8 @@ export default function BodyTemplate({
     if (!isTokenValid) {
       // Jika token tidak valid, arahkan pengguna ke halaman login
       router.push('/login');
+    } else {
+      router.push('/');
     }
   }, []); // Pastikan useEffect hanya dijalankan sekali saat komponen di-mount
 
