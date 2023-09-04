@@ -4,9 +4,9 @@ import { get_menu, set_menu } from './reducers';
 export function* getMenus() {
   try {
     const response = [
-      {
-        menu: 'dashboard',
-      },
+      // {
+      //   menu: 'dashboard',
+      // },
       {
         menu: 'chart',
         child: ['bar', 'line', 'pie'],

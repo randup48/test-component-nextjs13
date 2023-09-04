@@ -5,6 +5,8 @@ import {
 } from '@/api/firebase/push_notification';
 import { messaging } from '@/utils/firebase/config';
 import { useAppSelector } from '@/utils/redux/hooks';
+import { useRouter } from 'next/navigation';
+import { NextRequest, NextResponse } from 'next/server';
 import { useEffect } from 'react';
 
 export const metadata = {
@@ -22,10 +24,18 @@ const initiate = async () => {
   }
 };
 
-export default function Home() {
+export default function Home(req: NextRequest) {
   const access_menu = useAppSelector(state => state.access_menu);
+  const route = useRouter();
+
   useEffect(() => {
     initiate();
+
+    // if (
+    //   access_menu.length === 0 &&
+    //   access_menu.find(access => (access.menu = 'dashboard')) === undefined
+    // )
+    //   NextResponse.redirect(new URL('/404', req.nextUrl));
   }, []);
 
   return (

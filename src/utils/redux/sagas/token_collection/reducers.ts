@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface initValue {
-  loading: boolean;
-  data: any;
-}
-
 const initialState = <initValue>{
   loading: true,
   data: [],

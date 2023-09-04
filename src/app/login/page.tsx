@@ -3,6 +3,8 @@ import { useAppDispatch } from '@/utils/redux/hooks';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
+let cookies = require('js-cookie');
+
 const Page = () => {
   const email = useRef(null);
   const pass = useRef(null);
@@ -31,8 +33,8 @@ const Page = () => {
       <input
         type='submit'
         value='Login'
-        onClick={() => {
-          localStorage.setItem('token', 'sdawds');
+        onClick={async () => {
+          cookies.set('token', 'dawdsawd', { expires: 1 }, { secure: true });
           dispatch({ type: 'access_menu/get_menu', payload: {} });
           router.push('/');
         }}

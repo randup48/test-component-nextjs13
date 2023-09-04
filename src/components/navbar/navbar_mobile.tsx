@@ -81,7 +81,8 @@ export default function Navbar() {
   };
 
   return (
-    pathname !== '/login' && (
+    !(pathname === '/login') &&
+    !(pathname === '/404') && (
       <nav>
         <div className='p-3 flex items-center drop_shadow gap-3'>
           {/* menu */}
