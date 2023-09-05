@@ -1,9 +1,9 @@
 'use client';
-import { useAppDispatch } from '@/utils/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
-let cookies = require('js-cookie');
+import Cookies from 'js-cookie';
 
 const Page = () => {
   const email = useRef(null);
@@ -34,7 +34,7 @@ const Page = () => {
         type='submit'
         value='Login'
         onClick={async () => {
-          cookies.set('token', 'dawdsawd', { expires: 1 }, { secure: true });
+          Cookies.set('token', 'dawdsawd', { expires: 1 });
           dispatch({ type: 'access_menu/get_menu', payload: {} });
           router.push('/');
         }}

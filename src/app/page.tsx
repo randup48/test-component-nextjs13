@@ -31,11 +31,11 @@ export default function Home(req: NextRequest) {
   useEffect(() => {
     initiate();
 
-    // if (
-    //   access_menu.length === 0 &&
-    //   access_menu.find(access => (access.menu = 'dashboard')) === undefined
-    // )
-    //   NextResponse.redirect(new URL('/404', req.nextUrl));
+    if (
+      access_menu.length === 0 ||
+      access_menu.find(access => (access.menu = 'dashboard')) === undefined
+    )
+      route.push('/404');
   }, []);
 
   return (
